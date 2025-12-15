@@ -1,0 +1,104 @@
+@use "styles" as *;
+
+.header {
+  background-color: $white;
+  box-shadow: 0 4px 20px 0 rgb(0 0 0 / 5%);
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  height: 124px;
+  max-width: 1920px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  height: 36px;
+  aspect-ratio: 339 / 48;
+  display: block;
+  object-fit: contain;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.searchInput {
+  @include text-small;
+  width: 100%;
+  height: 100%;
+  padding: 9px 56px 9px 20px;
+  border: 2px solid $dark-text;
+  border-radius: 60px;
+  background-color: $white;
+  color: $dark-text;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &::placeholder {
+    color: $button-grey;
+  }
+
+  &:focus {
+    border-color: $dark-text;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.icon {
+  @include square(48px);
+  display: block;
+}

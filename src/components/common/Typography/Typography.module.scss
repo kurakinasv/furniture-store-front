@@ -1,0 +1,41 @@
+@use "styles" as *;
+
+.variant {
+  &_heading {
+    @include heading;
+  }
+
+  &_sub-heading {
+    @include sub-heading;
+  }
+
+  &_sub-heading-bold {
+    @include sub-heading-bold;
+  }
+
+  &_text-base {
+    @include text-base;
+  }
+
+  &_text-base-bold {
+    @include text-base-bold;
+  }
+
+  &_text-small {
+    @include text-small;
+  }
+}
+
+.color {
+  &_black {
+    color: $black;
+  }
+
+  &_white {
+    color: $white;
+  }
+
+  &_gray {
+    color: $charcoal;
+  }
+}
