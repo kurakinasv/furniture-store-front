@@ -1,0 +1,138 @@
+@use "styles" as *;
+
+.root {
+  padding: 60px 80px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.back-button {
+  margin-bottom: 40px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.image-section {
+  position: relative;
+  width: 100%;
+}
+
+.image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: $button-grey;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  font-size: 48px;
+  color: $dark-text;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-weight: 400;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  margin: 0;
+}
+
+.price {
+  margin: 0;
+  color: $dark-text;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.description-title {
+  margin: 0;
+}
+
+.description-text {
+  color: $charcoal;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.add-to-cart {
+  flex: 1;
+  max-width: 300px;
+}
+
+// Responsive breakpoints
+@media (0 < width <= 1024px) {
+  .root {
+    padding: 40px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .image-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (0 < width <= 768px) {
+  .root {
+    padding: 30px 20px;
+  }
+
+  .back-button {
+    margin-bottom: 30px;
+  }
+
+  .content {
+    gap: 30px;
+  }
+
+  .info-section {
+    gap: 30px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-to-cart {
+    max-width: 100%;
+  }
+}

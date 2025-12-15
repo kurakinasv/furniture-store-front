@@ -1,5 +1,6 @@
 export enum RoutesEnum {
   HOME = '/',
+  PRODUCTS = '/products',
   PRODUCT = '/product',
   UI_KIT = '/ui-kit',
 }
@@ -7,6 +8,9 @@ export enum RoutesEnum {
 export const routes = {
   [RoutesEnum.HOME]: {
     path: RoutesEnum.HOME,
+  },
+  [RoutesEnum.PRODUCTS]: {
+    path: RoutesEnum.PRODUCTS,
   },
   [RoutesEnum.PRODUCT]: {
     path: RoutesEnum.PRODUCT,
