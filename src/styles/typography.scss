@@ -1,0 +1,35 @@
+@mixin font-primary($weight: 400) {
+  font-family: "Montserrat", system-ui, "Helvetica Neue", "Helvetica", sans-serif;
+  font-weight: $weight;
+  line-height: 1.2;
+}
+
+@mixin heading {
+  @include font-primary(600);
+  font-size: 48px;
+}
+
+@mixin sub-heading {
+  @include font-primary;
+  font-size: 32px;
+}
+
+@mixin sub-heading-bold {
+  @include font-primary(600);
+  font-size: 32px;
+}
+
+@mixin text-base {
+  @include font-primary;
+  font-size: 24px;
+}
+
+@mixin text-base-bold {
+  @include font-primary(600);
+  font-size: 24px;
+}
+
+@mixin text-small {
+  @include font-primary;
+  font-size: 16px;
+}

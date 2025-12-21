@@ -1,13 +1,24 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const IS_DEV = mode === 'development';
 
   return {
-    plugins: [react()],
+    plugins: [
+      svgr({
+        svgrOptions: {
+          ref: true,
+          svgo: false,
+          titleProp: true,
+        },
+        include: '**/*.svg?react',
+      }),
+      react(),
+    ],
     resolve: {
       alias: {
         assets: path.resolve(__dirname, 'src/assets'),

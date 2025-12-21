@@ -12,7 +12,14 @@
         "ignorePseudoClasses": ["global", "local"]
       }
     ],
-    "declaration-empty-line-before": null
+    "declaration-empty-line-before": null,
+    "font-family-name-quotes": "always-unless-keyword",
+    "value-keyword-case": [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ]
   },
   "ignoreFiles": ["node_modules/**", "dist/**", "build/**", "coverage/**"]
 }

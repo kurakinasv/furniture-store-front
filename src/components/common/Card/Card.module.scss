@@ -1,0 +1,80 @@
+@use "styles" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  width: 100%;
+  max-width: 354px;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  background-color: $button-grey;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 456px;
+}
+
+.image-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $dark-text;
+  font-size: 32px;
+  line-height: 52px;
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-weight: 400;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  color: $dark-text;
+}
+
+.price {
+  @include sub-heading-bold;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 700;
+  width: 100%;
+}
+
+.title {
+  @include text-base;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.add-to-cart-button {
+  flex: 0 0 auto;
+}

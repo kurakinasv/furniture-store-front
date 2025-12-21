@@ -1,0 +1,70 @@
+@use "styles" as *;
+
+.root {
+  @include text-base-bold;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: 15px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $button-grey;
+  }
+}
+
+.size {
+  &_s {
+    height: 56px;
+    padding: 14px 30px;
+    border-radius: 30px;
+  }
+
+  &_m {
+    height: 60px;
+    padding: 15px 30px;
+  }
+
+  &_l {
+    height: 80px;
+    padding: 25px 30px;
+    max-width: 482px;
+  }
+
+  &_xl {
+    height: 80px;
+    max-width: 627px;
+    padding: 25px 30px;
+  }
+}
+
+.color {
+  &_default {
+    background-color: $button-red;
+    color: $white;
+  }
+
+  &_transparent {
+    @include text-base;
+
+    background-color: transparent;
+    color: $button-grey-text;
+  }
+}
+
+.root.color_transparent:hover:not(:disabled) {
+  color: $white;
+  border-color: transparent;
+}

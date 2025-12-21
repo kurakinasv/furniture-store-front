@@ -22,3 +22,7 @@
     opacity: 0.8;
   }
 }
+
+@mixin animate($property, $duration: 0.2s, $ease: ease) {
+  transition: $property $duration $ease;
+}
