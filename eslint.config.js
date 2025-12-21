@@ -21,6 +21,7 @@ export default defineConfig([
     },
     rules: {
       'no-console': 'warn',
+      'react-refresh/only-export-components': ['error', { customHOCs: ['observer'] }],
     },
   },
 ]);

@@ -1,5 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import { observer } from 'mobx-react-lite';
+import { useNavigate } from 'react-router';
+import { RoutesEnum } from 'config/routes';
 
 import BurgerIcon from 'assets/icons/burger.svg?react';
 import SearchIcon from 'assets/icons/search.svg?react';
@@ -7,6 +10,7 @@ import HeartIcon from 'assets/icons/heart.svg?react';
 import BagIcon from 'assets/icons/bag.svg?react';
 import UserIcon from 'assets/icons/user.svg?react';
 import logo from 'assets/logo.png';
+import { useRootStore } from 'stores/global/hooks';
 
 import s from './Header.module.scss';
 
@@ -19,20 +23,32 @@ type HeaderProps = {
   className?: string;
 };
 
-const Header = ({
+const Header: React.FC<HeaderProps> = ({
   onMenuClick,
   onSearchChange,
   onFavoritesClick,
   onCartClick,
   onProfileClick,
   className,
-}: HeaderProps): React.ReactElement => {
+}) => {
+  const navigate = useNavigate();
+  const { isAuthenticated, setIsAuthenticated } = useRootStore();
+
   const [searchValue, setSearchValue] = React.useState('');
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchValue(value);
     onSearchChange?.(value);
+  };
+
+  const handleBurgerClick = () => {
+    setIsAuthenticated(!isAuthenticated);
+    onMenuClick?.();
+  };
+
+  const onLogoClick = () => {
+    navigate(RoutesEnum.HOME);
   };
 
   return (
@@ -42,12 +58,12 @@ const Header = ({
           <button
             type="button"
             className={s.iconButton}
-            onClick={onMenuClick}
+            onClick={handleBurgerClick}
             aria-label="Open menu"
           >
             <BurgerIcon className={s.icon} />
           </button>
-          <img src={logo} alt="HFurniture" className={s.logo} />
+          <img src={logo} alt="HFurniture" className={s.logo} onClick={onLogoClick} />
         </div>
 
         <div className={s.rightSection}>
@@ -79,14 +95,16 @@ const Header = ({
             >
               <BagIcon className={s.icon} />
             </button>
-            <button
-              type="button"
-              className={s.iconButton}
-              onClick={onProfileClick}
-              aria-label="User profile"
-            >
-              <UserIcon className={s.icon} />
-            </button>
+            {isAuthenticated && (
+              <button
+                type="button"
+                className={s.iconButton}
+                onClick={onProfileClick}
+                aria-label="User profile"
+              >
+                <UserIcon className={s.icon} />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -94,4 +112,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default observer(Header);
