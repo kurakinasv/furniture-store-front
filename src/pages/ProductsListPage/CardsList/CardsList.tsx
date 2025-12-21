@@ -4,15 +4,18 @@ import { observer } from 'mobx-react-lite';
 
 import { Card } from 'components/common';
 import { routes, RoutesEnum } from 'config/routes';
-import { useProductsPageStore } from 'stores/local/productsPage';
 import { useFavouritesStore } from 'stores/global/hooks';
+import type { Product } from 'stores/models/product';
 
 import s from './CardsList.module.scss';
 
-const CardsList: React.FC = () => {
+type Props = {
+  products: Product[];
+};
+
+const CardsList: React.FC<Props> = ({ products }) => {
   const navigate = useNavigate();
 
-  const { products } = useProductsPageStore();
   const { toggleFavourite, isFavourite } = useFavouritesStore();
 
   const handleCardClick = (productId: number) => {

@@ -3,6 +3,7 @@ export enum RoutesEnum {
   PRODUCTS = '/products',
   PRODUCT = '/product',
   UI_KIT = '/ui-kit',
+  FAVOURITES = '/favourites',
 }
 
 export const routes = {
@@ -18,5 +19,8 @@ export const routes = {
   },
   [RoutesEnum.UI_KIT]: {
     path: RoutesEnum.UI_KIT,
+  },
+  [RoutesEnum.FAVOURITES]: {
+    path: RoutesEnum.FAVOURITES,
   },
 };

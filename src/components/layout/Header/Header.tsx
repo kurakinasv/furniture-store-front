@@ -17,7 +17,6 @@ import s from './Header.module.scss';
 type HeaderProps = {
   onMenuClick?: () => void;
   onSearchChange?: (value: string) => void;
-  onFavoritesClick?: () => void;
   onCartClick?: () => void;
   onProfileClick?: () => void;
   className?: string;
@@ -26,7 +25,6 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({
   onMenuClick,
   onSearchChange,
-  onFavoritesClick,
   onCartClick,
   onProfileClick,
   className,
@@ -49,6 +47,10 @@ const Header: React.FC<HeaderProps> = ({
 
   const onLogoClick = () => {
     navigate(RoutesEnum.HOME);
+  };
+
+  const onFavoritesClick = () => {
+    navigate(RoutesEnum.FAVOURITES);
   };
 
   return (
