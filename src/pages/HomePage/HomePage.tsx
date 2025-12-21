@@ -16,10 +16,15 @@ const HomePage: React.FC = () => {
     navigate(RoutesEnum.UI_KIT);
   };
 
+  const onClickProducts = () => {
+    navigate(RoutesEnum.PRODUCTS);
+  };
+
   return (
     <PageWrapper>
       <h1>HomePage Component</h1>
       <Button onClick={onClick}>Go to detail</Button>
+      <Button onClick={onClickProducts}>Go to Products List</Button>
       <Button onClick={onClickUIKit}>Go to UI Kit</Button>
     </PageWrapper>
   );

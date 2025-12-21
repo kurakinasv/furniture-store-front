@@ -15,6 +15,7 @@ type CardProps = {
   isFavorite?: boolean;
   onFavoriteClick?: () => void;
   onAddToCart?: () => void;
+  onClick?: () => void;
   className?: string;
 };
 
@@ -26,6 +27,7 @@ const Card = ({
   isFavorite = false,
   onFavoriteClick,
   onAddToCart,
+  onClick,
   className,
 }: CardProps): React.ReactElement => {
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -41,7 +43,7 @@ const Card = ({
   };
 
   return (
-    <div className={clsx(s.card, className)}>
+    <div className={clsx(s.card, onClick && s.clickable, className)} onClick={onClick}>
       <div className={s.image}>
         {imageUrl ? (
           <img src={imageUrl} alt={title} className={s['image-content']} />

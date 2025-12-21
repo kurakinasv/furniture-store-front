@@ -7,6 +7,20 @@
   align-items: center;
   width: 100%;
   max-width: 354px;
+  flex-shrink: 0;
+
+  &.clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    &:active {
+      transform: translateY(-2px);
+    }
+  }
 }
 
 .image {

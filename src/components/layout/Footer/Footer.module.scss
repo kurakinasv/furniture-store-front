@@ -1,0 +1,57 @@
+@use "styles" as *;
+
+.footer {
+  background-color: #e2e2e2;
+  margin-top: 160px;
+  padding: 60px 80px 160px;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.column {
+  width: 100%;
+}
+
+.column__header {
+  &:not(:first-child) {
+    margin-top: 60px;
+  }
+}
+
+.column__items {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item__link {
+  font-size: 24px;
+  color: $black;
+  text-wrap: wrap;
+}
+
+.has__icon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & svg {
+    display: block;
+    width: 42px;
+    height: 42px;
+  }
+
+  & a {
+    width: max-content;
+  }
+
+  &.address {
+    align-items: start;
+  }
+}

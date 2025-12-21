@@ -1,0 +1,73 @@
+@use "styles" as *;
+
+.root {
+  padding: 60px 80px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 60px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: $button-grey;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 30px;
+  align-items: start;
+}
+
+@media (0 < width <= 1440px) {
+  .root {
+    padding: 40px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 20px;
+  }
+}
+
+@media (0 < width <= 1024px) {
+  .root {
+    padding: 30px 20px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+  }
+}
+
+@media (0 < width <= 768px) {
+  .root {
+    padding: 20px;
+  }
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .grid {
+    gap: 30px 15px;
+  }
+}
+
+@media (0 < width <= 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
