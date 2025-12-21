@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { RootStoreContext } from 'stores/global/root';
+import { RootStore, RootStoreContext } from 'stores/global/root';
+import type { FavouritesStore } from './favourites';
 
-export const useRootStore = () => {
+export const useRootStore = (): RootStore => {
   const context = useContext(RootStoreContext);
 
   if (!context) {
@@ -9,4 +10,8 @@ export const useRootStore = () => {
   }
 
   return context;
+};
+
+export const useFavouritesStore = (): FavouritesStore => {
+  return useRootStore().favouritesStore;
 };

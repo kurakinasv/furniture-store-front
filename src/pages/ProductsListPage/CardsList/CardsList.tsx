@@ -1,32 +1,26 @@
-import { Card } from 'components/common';
-import { routes, RoutesEnum } from 'config/routes';
 import * as React from 'react';
 import { useNavigate } from 'react-router';
+import { observer } from 'mobx-react-lite';
+
+import { Card } from 'components/common';
+import { routes, RoutesEnum } from 'config/routes';
 import { useProductsPageStore } from 'stores/local/productsPage';
+import { useFavouritesStore } from 'stores/global/hooks';
 
 import s from './CardsList.module.scss';
-import { observer } from 'mobx-react-lite';
 
 const CardsList: React.FC = () => {
   const navigate = useNavigate();
-  const { products } = useProductsPageStore();
 
-  const [favorites, setFavorites] = React.useState<Set<number>>(new Set());
+  const { products } = useProductsPageStore();
+  const { toggleFavourite, isFavourite } = useFavouritesStore();
 
   const handleCardClick = (productId: number) => {
     navigate(routes[RoutesEnum.PRODUCT].id(String(productId)));
   };
 
-  const toggleFavorite = (productId: number) => {
-    setFavorites((prev) => {
-      const newFavorites = new Set(prev);
-      if (newFavorites.has(productId)) {
-        newFavorites.delete(productId);
-      } else {
-        newFavorites.add(productId);
-      }
-      return newFavorites;
-    });
+  const onToggleFavorite = (productId: number) => () => {
+    toggleFavourite(productId);
   };
 
   const handleAddToCart = (productId: number, title: string) => {
@@ -42,8 +36,8 @@ const CardsList: React.FC = () => {
           price={product.price}
           imageUrl={product.imageUrl}
           imagePlaceholder={product.imagePlaceholder}
-          isFavorite={favorites.has(product.id)}
-          onFavoriteClick={() => toggleFavorite(product.id)}
+          isFavorite={isFavourite(product.id)}
+          onFavoriteClick={onToggleFavorite(product.id)}
           onAddToCart={() => handleAddToCart(product.id, product.title)}
           onClick={() => handleCardClick(product.id)}
         />
