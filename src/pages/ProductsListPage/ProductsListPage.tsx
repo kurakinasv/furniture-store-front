@@ -6,8 +6,9 @@ import { Typography } from 'components/common';
 import { useLocalStore } from 'stores/local/hooks';
 import { ProductsPageStore, ProductsPageStoreProvider } from 'stores/local/productsPage';
 
-import s from './ProductsListPage.module.scss';
 import { CardsList } from './CardsList';
+
+import s from './ProductsListPage.module.scss';
 
 const ProductsListPage: React.FC = () => {
   const productsPageStore = useLocalStore(() => new ProductsPageStore());
@@ -19,17 +20,15 @@ const ProductsListPage: React.FC = () => {
   return (
     <ProductsPageStoreProvider store={productsPageStore}>
       <PageWrapper>
-        <div className={s.root}>
-          <header className={s.header}>
-            <Typography tag="h1" variant="heading" className={s.title}>
-              Каталог мебели
-            </Typography>
-            <Typography variant="text-base" color="gray" className={s.subtitle}>
-              Найдено товаров: {productsPageStore?.products.length}
-            </Typography>
-          </header>
-          <CardsList />
-        </div>
+        <header className={s.header}>
+          <Typography tag="h1" variant="heading" className={s.title}>
+            Каталог мебели
+          </Typography>
+          <Typography variant="text-base" color="gray">
+            Найдено товаров: {productsPageStore?.products.length}
+          </Typography>
+        </header>
+        <CardsList products={productsPageStore?.products ?? []} />
       </PageWrapper>
     </ProductsPageStoreProvider>
   );
