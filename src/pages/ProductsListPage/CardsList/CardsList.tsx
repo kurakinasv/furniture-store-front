@@ -35,8 +35,8 @@ const CardsList: React.FC<Props> = ({ products }) => {
       {products.map((product) => (
         <Card
           key={product.id}
-          //title={product.title}
-          title={product.name}
+          title={product.title}
+          // title={product.name}
           price={product.price}
           imageUrl={product.imageUrl}
           imagePlaceholder={product.imagePlaceholder}
