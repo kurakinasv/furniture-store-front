@@ -35,5 +35,20 @@ export default defineConfig(({ mode }) => {
         generateScopedName: IS_DEV ? '[name]__[local]__[hash:base64:5]' : '[hash:base64:5]',
       },
     },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
+    },
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './src/test/setup.ts',
+      css: true,
+    },
   };
 });
